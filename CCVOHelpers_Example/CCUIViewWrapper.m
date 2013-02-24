@@ -27,7 +27,7 @@
 //    [uiItem removeFromSuperview];
 //    [[[CCDirector sharedDirector] view] removeFromSuperview];
 	self.uiItem = nil;
-	//[super dealloc];
+	[super dealloc];
 }
 
 - (void) setParent:(CCNode *)parent

@@ -142,6 +142,7 @@
 		FAA794A116DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7949C16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m */; };
 		FAA794A216DA4D7A00AEFF0D /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7949E16DA4D7A00AEFF0D /* CCUIViewWrapper.m */; };
 		FAA794A316DA4D7A00AEFF0D /* CCVOHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */; };
+		FAA794A516DA989500AEFF0D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FAA794A416DA989500AEFF0D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -429,6 +430,7 @@
 		FAA7949E16DA4D7A00AEFF0D /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
 		FAA7949F16DA4D7A00AEFF0D /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
 		FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCVOHelper.m; sourceTree = "<group>"; };
+		FAA794A416DA989500AEFF0D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +456,7 @@
 		FAA792E116DA4C9D00AEFF0D = {
 			isa = PBXGroup;
 			children = (
+				FAA794A416DA989500AEFF0D /* README.md */,
 				FAA792FF16DA4C9D00AEFF0D /* CCVOHelpers_Example */,
 				FAA792EC16DA4C9D00AEFF0D /* Frameworks */,
 				FAA792EB16DA4C9D00AEFF0D /* Products */,
@@ -494,11 +497,11 @@
 				FAA7949316DA4CA600AEFF0D /* IntroLayer.h */,
 				FAA7949416DA4CA600AEFF0D /* IntroLayer.m */,
 				FAA7949B16DA4D7A00AEFF0D /* CCVOHelper.h */,
-				FAA7949C16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m */,
+				FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */,
 				FAA7949D16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.h */,
+				FAA7949C16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m */,
 				FAA7949E16DA4D7A00AEFF0D /* CCUIViewWrapper.m */,
 				FAA7949F16DA4D7A00AEFF0D /* CCUIViewWrapper.h */,
-				FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */,
 				FAA7930016DA4C9D00AEFF0D /* Resources */,
 				FAA7931816DA4C9E00AEFF0D /* libs */,
 				FAA7948916DA4CA600AEFF0D /* Supporting Files */,
@@ -948,6 +951,7 @@
 				FAA7931416DA4C9E00AEFF0D /* Icon@2x.png in Resources */,
 				FAA7931716DA4C9E00AEFF0D /* iTunesArtwork in Resources */,
 				FAA7946D16DA4CA600AEFF0D /* ChangeLog in Resources */,
+				FAA794A516DA989500AEFF0D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,6 +1181,7 @@
 				FAA7949A16DA4CA600AEFF0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

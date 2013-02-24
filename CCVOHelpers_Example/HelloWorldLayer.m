@@ -88,8 +88,16 @@
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
-		
-		
+        
+        
+        // Add Textlabel which is transparent but will be read by UIAccessibility
+        
+		[self addUIViewLabelWithString:label.string
+                             forCCNode:label
+                              withRect:CGRectMake(label.position.x - (label.texture.contentSize.width / 2), //crappy Anchorpoint differences
+                                                  label.position.y + (label.texture.contentSize.height /2), //I am sure this can be more elegant
+                                                  label.texture.contentSize.width,
+                                                  label.texture.contentSize.height)];
 		
 		//
 		// Leaderboards and Achievements
@@ -101,8 +109,16 @@
 		// to avoid a retain-cycle with the menuitem and blocks
 		__block id copy_self = self;
 		
+        
+        //moving the Strings out, since I did  not find how to directly access the string of the CCMenuItemFont object
+        // they way it is used in this example
+        
+        NSString* achievementString = @"Achievements";
+        NSString* leaderboardString = @"Leaderboard";
+        
+        
 		// Achievement Menu Item using blocks
-		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
+		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:achievementString block:^(id sender) {
 			
 			
 			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
@@ -114,9 +130,12 @@
 			
 			[achivementViewController release];
 		}];
-		
-		// Leaderboard Menu Item using blocks
-		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
+        
+        
+                                    
+        
+  		// Leaderboard Menu Item using blocks
+		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:leaderboardString block:^(id sender) {
 			
 			
 			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
@@ -131,12 +150,47 @@
 
 		
 		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
+        
+        //padding value
+        
+        int padding = 20;
 		
-		[menu alignItemsHorizontallyWithPadding:20];
+		[menu alignItemsHorizontallyWithPadding:padding];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
 		
 		// Add the menu to the layer
 		[self addChild:menu];
+        
+        CCLOG(@"itemAchievement Rect start x: %f, start y: %f, size x: %f, size y: %f", itemAchievement.rect.origin.x, itemAchievement.rect.origin.y, itemAchievement.rect.size.width, itemAchievement.rect.size.height);
+        
+        // add UIButton with the activate method in this thing
+        // the fact that this is labels inside a menu requires manual setting of the CGRect parameters
+        // this could use some more work
+        
+        [self addUIViewButtonWithString:achievementString
+                              forCCNode:itemAchievement
+                             withTarget:itemAchievement
+                           withSelector:@selector(activate) //this calls the activate method of the button, in this case the block above!
+                               withRect:CGRectMake(size.width/2 - itemAchievement.rect.size.width,
+                                                   size.height/2 - itemAchievement.rect.size.height,
+                                                   itemAchievement.rect.size.width,
+                                                   itemAchievement.rect.size.height) ];
+        
+        
+        // Same here
+        
+        [self addUIViewButtonWithString:leaderboardString
+                              forCCNode:itemLeaderboard
+                             withTarget:itemLeaderboard
+                           withSelector:@selector(activate)
+                               withRect:CGRectMake(size.width/2 + padding,
+                                                   size.height/2 - itemLeaderboard.rect.size.height,
+                                                   itemLeaderboard.rect.size.width,
+                                                   itemLeaderboard.rect.size.height) ];
+
+        
+
+        
 
 	}
 	return self;
@@ -170,13 +224,13 @@
 
 #pragma mark VoiceOver stuff
 
--(CCUIViewWrapper*)addUIViewButtonWithString:(NSString *)voString forCCNode:(CCNode*)ccnode withSelector:(SEL)selector withRect:(CGRect)rect
+-(CCUIViewWrapper*)addUIViewButtonWithString:(NSString *)voString forCCNode:(CCNode*)ccnode withTarget:(id)target withSelector:(SEL)selector withRect:(CGRect)rect
 {
     
     CCUIViewWrapper* voiceOverButtonWrapper = [CCUIViewWrapper wrapperForUIView:
                                                [[CCVOHelper sharedCCVOHelper] createUIViewItemFromCCNode:ccnode
-                                                                                     withVoiceOverButton:voString
-                                                                                                  sender:ccnode
+                                                                                              withVoiceOverButton:voString
+                                                                                                  sender:target
                                                                                                 selector:selector
                                                                                           withCustomRect:rect]
                                              withVoiceOverIsRunningNotification:YES];

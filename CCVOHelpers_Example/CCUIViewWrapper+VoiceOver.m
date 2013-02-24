@@ -48,6 +48,7 @@
     [uiItem removeFromSuperview];
     self.uiItem = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
 }
 
 -(void)voiceOverStatusChanged {

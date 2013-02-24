@@ -7,8 +7,15 @@
 //
 //  This is free code under MIT License, created in Germany
 #import "cocos2d.h"
-#import "Constants.h"
 #import "CCVOHelper.h"
+//define VoiceOver language, this is the voice the system uses to read.
+//here you can localize
+//For now we use this
+
+#define kVOLanguage @"en-EN"
+
+
+#
 
 @implementation CCVOHelper : UIView
 
@@ -75,7 +82,6 @@ static CCVOHelper* ccVOHelper = nil;
         [voiceOverTextLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10]];
         [voiceOverTextLabel setTextAlignment:NSTextAlignmentCenter];
         [voiceOverTextLabel setAccessibilityLanguage:kVOLanguage];
-        //[voiceOverTextLabel setAccessibilityLanguage:@"en-EN"];
 
         [voiceOverTextLabel setAccessibilityTraits:UIAccessibilityTraitStaticText];
 
