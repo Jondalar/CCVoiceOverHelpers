@@ -139,6 +139,9 @@
 		FAA7948F16DA4CA600AEFF0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7948E16DA4CA600AEFF0D /* AppDelegate.m */; };
 		FAA7949216DA4CA600AEFF0D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7949116DA4CA600AEFF0D /* HelloWorldLayer.m */; };
 		FAA7949516DA4CA600AEFF0D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7949416DA4CA600AEFF0D /* IntroLayer.m */; };
+		FAA794A116DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7949C16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m */; };
+		FAA794A216DA4D7A00AEFF0D /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7949E16DA4D7A00AEFF0D /* CCUIViewWrapper.m */; };
+		FAA794A316DA4D7A00AEFF0D /* CCVOHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -420,6 +423,12 @@
 		FAA7949116DA4CA600AEFF0D /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		FAA7949316DA4CA600AEFF0D /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		FAA7949416DA4CA600AEFF0D /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		FAA7949B16DA4D7A00AEFF0D /* CCVOHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVOHelper.h; sourceTree = "<group>"; };
+		FAA7949C16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCUIViewWrapper+VoiceOver.m"; sourceTree = "<group>"; };
+		FAA7949D16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCUIViewWrapper+VoiceOver.h"; sourceTree = "<group>"; };
+		FAA7949E16DA4D7A00AEFF0D /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
+		FAA7949F16DA4D7A00AEFF0D /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
+		FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCVOHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +493,12 @@
 				FAA7949116DA4CA600AEFF0D /* HelloWorldLayer.m */,
 				FAA7949316DA4CA600AEFF0D /* IntroLayer.h */,
 				FAA7949416DA4CA600AEFF0D /* IntroLayer.m */,
+				FAA7949B16DA4D7A00AEFF0D /* CCVOHelper.h */,
+				FAA7949C16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m */,
+				FAA7949D16DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.h */,
+				FAA7949E16DA4D7A00AEFF0D /* CCUIViewWrapper.m */,
+				FAA7949F16DA4D7A00AEFF0D /* CCUIViewWrapper.h */,
+				FAA794A016DA4D7A00AEFF0D /* CCVOHelper.m */,
 				FAA7930016DA4C9D00AEFF0D /* Resources */,
 				FAA7931816DA4C9E00AEFF0D /* libs */,
 				FAA7948916DA4CA600AEFF0D /* Supporting Files */,
@@ -1054,6 +1069,9 @@
 				FAA7948F16DA4CA600AEFF0D /* AppDelegate.m in Sources */,
 				FAA7949216DA4CA600AEFF0D /* HelloWorldLayer.m in Sources */,
 				FAA7949516DA4CA600AEFF0D /* IntroLayer.m in Sources */,
+				FAA794A116DA4D7A00AEFF0D /* CCUIViewWrapper+VoiceOver.m in Sources */,
+				FAA794A216DA4D7A00AEFF0D /* CCUIViewWrapper.m in Sources */,
+				FAA794A316DA4D7A00AEFF0D /* CCVOHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

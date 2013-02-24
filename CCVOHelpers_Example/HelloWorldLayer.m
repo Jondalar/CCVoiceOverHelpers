@@ -13,6 +13,30 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
+/*
+ 
+ CCVOHelpers
+ 
+ See Readme.md for details
+ 
+ This is based on HelloWorld from COcos2d-iphone.
+ 
+ Basically it allows to add a UIKit Element for CCNode. To create those objects a call to 
+ the helper class is required, it will return the object and add it to a specified node.
+ 
+ This is a side product I created based on CCUIViewWrapper for my game ECHO
+ It will probably change over time, but here is the actual implementation I use in ECHO which is with THIS 
+ in the AppStore.
+ 
+*/
+
+
+#import "CCUIViewWrapper+VoiceOver.h"
+#import "CCVOHelper.h"
+
+#define kVOTag 1975
+
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -40,6 +64,18 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
+        
+        
+        // ===========================
+        // Convenience functionality:
+        // if VO status changes while app is running
+        // we get notified and hide/show the UIKit Elements we need
+        // for 
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(voiceOverStatusChanged)
+                                                     name:UIAccessibilityVoiceOverStatusChanged
+                                                   object:nil];
 		
 		// create and initialize a Label
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
@@ -130,4 +166,52 @@
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
+
+
+#pragma mark VoiceOver stuff
+
+-(CCUIViewWrapper*)addUIViewButtonWithString:(NSString *)voString forCCNode:(CCNode*)ccnode withSelector:(SEL)selector withRect:(CGRect)rect
+{
+    
+    CCUIViewWrapper* voiceOverButtonWrapper = [CCUIViewWrapper wrapperForUIView:
+                                               [[CCVOHelper sharedCCVOHelper] createUIViewItemFromCCNode:ccnode
+                                                                                     withVoiceOverButton:voString
+                                                                                                  sender:ccnode
+                                                                                                selector:selector
+                                                                                          withCustomRect:rect]
+                                             withVoiceOverIsRunningNotification:YES];
+    [self addChild:voiceOverButtonWrapper z:10 tag:kVOTag];
+    
+    return voiceOverButtonWrapper;
+    
+}
+
+
+-(CCUIViewWrapper*)addUIViewLabelWithString:(NSString *)voString forCCNode:(CCNode*)ccnode withRect:(CGRect)rect
+{
+    CCUIViewWrapper* voiceOverTextLabelWrapper = [CCUIViewWrapper wrapperForUIView:
+                                                  [[CCVOHelper sharedCCVOHelper] createUIViewItemFromCCNode:ccnode
+                                                                                         withVoiceOverLabel:voString
+                                                                                                     sender:self
+                                                                                             withCustomRect:rect]
+                                                withVoiceOverIsRunningNotification:YES];
+    voiceOverTextLabelWrapper.opacity = 1; //make it opaque, not 0, because than it is "hidden" for UIAccessibility
+    [self addChild:voiceOverTextLabelWrapper z:10 tag:kVOTag];
+    
+    return voiceOverTextLabelWrapper;
+    
+}
+
+
+//Callback methos for Notifier
+//If you work with multiple scenes, this could also be done via a call back to the
+// AppDelegate and a method that the delegate calls via asking CCDirector for actual running scene
+
+-(void)voiceOverStatusChanged {
+    
+    CCLOG(@"User switched VoiceOver to %s", UIAccessibilityIsVoiceOverRunning() ? "ON" : "OFF");
+    
+}
+
+
 @end
